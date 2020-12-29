@@ -31,31 +31,31 @@ public class DateFormatChecker {
     }
 
     public String addDays(String userDate,String userNumber){
-        LocalDate userEnteredDate = null;
-        Integer numberOfDaysNeedToBeAdded = null;
+        LocalDate newDate = null;
+        Integer noOfDays = null;
         LocalDate updatedDate = null;
         try{
-            userEnteredDate = LocalDate.parse(userDate, dateTimeFormatter);
-            numberOfDaysNeedToBeAdded = Integer.parseInt(userNumber);
-        }catch(DateTimeParseException dtpe){
-            logger.warn(dtpe.getMessage());
-            throw new DateFormatMismatchException(dtpe.getMessage());
+            newDate = LocalDate.parse(userDate, dateTimeFormatter);
+            noOfDays = Integer.parseInt(userNumber);
+        }catch(DateTimeParseException dateTimeParseException){
+            logger.warn(dateTimeParseException.getMessage());
+            throw new DateFormatMismatchException(dateTimeParseException.getMessage());
         }catch(NumberFormatException exception){
             throw new NumberFormatException(exception.getMessage());
         }
 
-        if(userEnteredDate != null && numberOfDaysNeedToBeAdded != null){
-            switch(numberOfDaysNeedToBeAdded){
+        if(newDate != null && noOfDays != null){
+            switch(noOfDays){
                 case 30:
-                    updatedDate = userEnteredDate.plusDays(30);
+                    updatedDate = newDate.plusDays(30);
                     logger.info("30 days added to the user entered date");
                     break;
                 case 40:
-                    updatedDate = userEnteredDate.plusDays(40);
+                    updatedDate = newDate.plusDays(40);
                     logger.info("40 days added to the user entered date");
                     break;
                 case 50:
-                    updatedDate = userEnteredDate.plusDays(50);
+                    updatedDate = newDate.plusDays(50);
                     logger.info("50 days added to the user entered date");
                     break;
                 default:

@@ -31,20 +31,19 @@ public class DateCheckController {
 
 
     @PostMapping("/dateCheck")
-    public ResultDate checkDate(@RequestBody(required = false)Date user){
-        if(user == null){
+    public ResultDate checkDate(@RequestBody(required = false)Date date){
+        if(date == null){
             throw new DateFormatMismatchException("Please enter the date and slo");
         }
-        logger.info(user.getDate());
-        logger.info(user.getSlo());
+       
         String updatedDay;
 
-        if(user.getDate()== null && user.getSlo() == null){
-            throw new DateFormatMismatchException("Date and SLO Should not be empty. Enter a valid values");
+        if(date.getDate()== null && date.getSlo() == null){
+            throw new DateFormatMismatchException("Date and SLO Should not be empty.");
         }
 
-        if(dateFormatChecker.checkDateFormat(user.getDate())){
-               updatedDay = dateFormatChecker.addDays(user.getDate(),user.getSlo());
+        if(dateFormatChecker.checkDateFormat(date.getDate())){
+               updatedDay = dateFormatChecker.addDays(date.getDate(),date.getSlo());
                 return new ResultDate(updatedDay);
         }else{
              throw new RuntimeException("Days cannot added");
