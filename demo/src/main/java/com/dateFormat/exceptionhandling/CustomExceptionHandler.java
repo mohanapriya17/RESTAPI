@@ -16,13 +16,13 @@ public class CustomExceptionHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(DateFormatMismatchException.class)
     public ErrorMessage dateFormatError(DateFormatMismatchException dfme){
-        logger.warn("Date format mismatch exception occurs");
+        logger.info("Date format mismatch exception occurs");
         return new ErrorMessage("400 error Message");
     }
 
     @ExceptionHandler(NumberFormatException.class)
     public ErrorMessage numberFormatException(NumberFormatException nfe){
-        logger.warn("Number of Format exception occurs");
+        logger.info("Number of Format exception occurs");
         return new ErrorMessage("400 NumberFormatException");
     }
 
