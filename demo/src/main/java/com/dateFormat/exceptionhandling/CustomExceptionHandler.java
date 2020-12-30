@@ -10,7 +10,7 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 import com.dateFormat.model.ErrorMessage;
 
 import org.springframework.web.bind.annotation.ExceptionHandler;
-@RestControllerAdvice(basePackages = {"com.dateformatchecker"})
+@RestControllerAdvice(basePackages = {"com.dateformat"})
 public class CustomExceptionHandler extends ResponseEntityExceptionHandler {
     private final Logger logger = LogManager.getLogger(CustomExceptionHandler.class);
 

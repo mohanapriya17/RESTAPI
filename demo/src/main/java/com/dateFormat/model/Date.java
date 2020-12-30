@@ -1,6 +1,11 @@
 package com.dateFormat.model;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
+@ApiModel
 public class Date {
+	@ApiModelProperty(name = "date",required = true,value = "17-10-1998")
 	 private String date;
 	    private String slo;
 		public String getDate() {
