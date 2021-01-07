@@ -1,0 +1,11 @@
+server:
+  port : 9090
+  error:
+    whitelabel:
+      enabled: false
+
+security:
+    http:
+      auth:
+        authHeaderName : X-API-KEY
+        authHeaderValue : KimHynJoong
