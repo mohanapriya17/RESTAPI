@@ -7,5 +7,5 @@ server:
 security:
     http:
       auth:
-        authHeaderName : X-API-KEY
-        authHeaderValue : KimHynJoong
+        name : X-API-KEY
+        value : KimHynJoong

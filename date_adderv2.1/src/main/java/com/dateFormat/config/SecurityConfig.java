@@ -19,27 +19,23 @@ import org.springframework.security.core.Authentication;
 public class SecurityConfig extends WebSecurityConfigurerAdapter
 {
 
-    @Value("${security.http.auth.authHeaderName}")
-    private String authHeaderName;
-    @Value("${security.http.auth.authHeaderValue}")
-    private String authHeaderValue;
+    @Value("${security.http.auth.name}")
+    private String name;
+    @Value("${security.http.auth.value}")
+    private String value;
 
     private static Logger logger = LogManager.getLogger();
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-       PreAuthenticatedTokenFilter filter = new PreAuthenticatedTokenFilter(authHeaderName);
+       PreAuthenticatedTokenFilter filter = new PreAuthenticatedTokenFilter(name);
        filter.setAuthenticationManager(
                new AuthenticationManager() {
                    @Override
                    public Authentication authenticate(Authentication authentication){
                         String principal = (String) authentication.getPrincipal();
 
-                        if(!authHeaderValue.equals(principal)){
-                            logger.info("This is working");
-                            throw new BadCredentialsException("The API key was not found " +
-                                    "or not the expected key");
-                        }
+                       
                         authentication.setAuthenticated(true);
                         return authentication;
                  }
